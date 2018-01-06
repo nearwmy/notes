@@ -365,4 +365,6 @@ var a = [1,2,3]
 	*	如果a属性存在于原型链并标记为只读，那么它就是无法修改或者创建屏蔽属性的。如果是严格模式下，代码还会报错。总之，不会发生屏蔽。
 	* 如果a属性存在于原型链并是一个setter,(当setter存在时，js会忽略它们的value和writeable特性)，会调用setter，这时a属性不会被添加到myObject对象上，也不会重新定义a这个setter （不会被重新定义 不懂）
 
+### ES5 新增数组方法
 
+forEach: 参数依次为: index,item,array,forEach不会遍历纯粹“占着官位吃空饷”的元素的
