@@ -90,7 +90,9 @@ git commit --amend
 `git branch -a -v` 查看仓库所有分支最后一个提交对象的信息
 `git branch --merged` 查看哪些分支已被并入当前分支
 `git branch --no-merged` 查看尚未合并的分支
-`git branch -d [branch name]` 删除某个分支，前提是前面没有 * 号 
+`git branch -d [branch name]` 删除已经被合并的某个分支，前提是前面没有 * 号 
+`git branch -D [branch name]` 删除未被合并的某个分支
+
 
 ### git remote
 
@@ -109,15 +111,38 @@ git commit --amend
 `git merge` 合并提交，当两个分支都有修改时，只创建一个新的提交，之前的合并记录在合并之后会丢失
 
 ### git rebase
-`git rebase` 当合并冲突时，
+`git rebase` 当合并两个都有修改的分支时，被合并分支会直接添加到合并分支上，并且此时的 HEAD 并不会随着合并而移到最新提交前，需要再执行 merge 操作使其 HEAD 前移
+
+参考[git merge 与 git rebase 的区别](https://backlog.com/git-tutorial/cn/stepup/stepup1_4.html)
+
 
 ### git push
 
+不带任何参数的git push，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用git config命令。
+
+```
+git config --global push.default matching / simple
+
+```
+
+`git push` 将本地分支的更新提交到远程仓库,默认会推送到与本地分支建立追踪关系的分支，如果没有则新建  
+`git push [远程主机名] ［本地分支名]:[远程分支名]` 将本地分支的更新提交到远程仓库的指定分支  
+`git push --force origin` 强制将本地分支推送到远程上  
+`git push --all origin` 不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机  
+
 ### git pull
 
+`git pull` 当前分支只有一个追踪分支，并已经建立关系，可以省略主机名和分支名  
+`git pull origin` 当前分支与远程已经建立关系，可以省略分支名  
+`git pull --rebase` 采用 rebase 模式合并，默认是 merge 模式  
+`git pull -p` 在拉取过程中如果远程分支已删除，加上 `-p` 参数会同时删掉本地分支，默认情况下是不会删除的  
 `git pull [远程主机名] ［远程分支名]:[本地分支名]`  拉取远程主机某个分支的更新，再与本地的指定分支合并，当远程分支和当前分支合并时，本地分支名可以省略
 
 
+### git stash
+
+`git stash` 将当前未提交的修改保存到 Git 工作栈中
+`git stash pop` 将保存的东西取出来
 
 
 
