@@ -6,7 +6,7 @@
 * [WebVR](#WebVR)
 * [图片资源选择](#图片资源选择)
 * [图像压缩与合并的几点感悟](#图像压缩与合并的几点感悟)
-* [RESTful API](#RESTful API)
+* [RESTful API](#RESTfulAPI)
 
 
 
