@@ -1,4 +1,17 @@
-### 判断原生滚动还是div区域滚动
+## 日常总结
+
+* [判断原生滚动还是div区域滚动](#判断原生滚动还是div区域滚动)
+* [js中的模拟事件](#js中的模拟事件)
+* [移动设备API支持说明](#移动设备API支持说明)
+* [WebVR](#WebVR)
+* [图片资源选择](#图片资源选择)
+* [图像压缩与合并的几点感悟](#图像压缩与合并的几点感悟)
+* [RESTful API](#RESTful API)
+
+
+
+判断原生滚动还是div区域滚动
+------
 
 ```js
  var originScroll = false;
@@ -9,7 +22,8 @@
 
  ```
 
-### js中的模拟事件
+js中的模拟事件
+------
 
  js中的事件很多，大致可分为UI事件（UIEvents),一般化的鼠标事件（MouseEvents）,DOM的变动事件（MutationEvents）,html事件（HTMLEvents）,一般事件都是用户触发的，但是不一般的情况下或者说应该对得上js无所不能称号的前提下，能生成就能自己触发。在测试和需要主动触发的情况下，这个方法就很给力了。
 
@@ -32,7 +46,8 @@ function trriger(el, type, bubbles, cancelable) {
 }
 ```
 
-### 移动设备API支持说明
+移动设备API支持说明
+------
 
 - **视频 video**: 
 	- iOS10以上不支持autoplay 和 preload ，iOS引入新属性 'playsinline'，此属性可以支持自动播放，前提是视频没有声音;
@@ -81,7 +96,8 @@ function trriger(el, type, bubbles, cancelable) {
 	- navigator.connection 事件，返回网络状态相应信息
 
 
-### WebVR
+WebVR
+------
 
 - Firefox 和 Google 已相继对VR API 进行支持,两家公司联合创建 WebVR 标准
 - MozVR团队推出开源框架 A-Frame，能通过html标签创建VR网页，不过此框架仅适用于简单的场景，基于threeJS 封装，能快速搭建VR网页。学习成本较低。
@@ -89,7 +105,8 @@ function trriger(el, type, bubbles, cancelable) {
 - 已存在基于普通浏览器实现的组件：webvr-polyfill，并且不依赖特定浏览器，引入此js即可
 
 
-### 图片资源选择
+图片资源选择
+------
 
 前端优化必不可少的环节，并且图片在网页中占比越来越高，对他们做越好的处理，会让你的页面加速越多。对其做优化之前，我们首先得了解图片。常用的图片格式包括：JPEG GIF PNG SVG，下面分别详细介绍一下：
 
@@ -115,7 +132,8 @@ function trriger(el, type, bubbles, cancelable) {
 - PNG 根据对透明度和色彩度的要求选择相应格式，生成文件较大，可以利用压缩工具辅助完成
 - SVG 适用于对图形元素有操作要求的动画图像以及要求是矢量图形的
 
-### 图像压缩与合并的几点感悟
+图像压缩与合并的几点感悟
+--------
 
 - 图片过大时，考虑压缩，压缩工具：jpegtran for jpeg, PNGoo for png
 - 合并图片，以此来减少http请求数量
@@ -123,3 +141,24 @@ function trriger(el, type, bubbles, cancelable) {
 	2. logo 建议单独放置
 	3. 移动端上的图标大多含有 ALPHA 通道的 PNG 图片，为了控制文件大小和显示效果，建议将颜色近的值放在一起，并注意空白间隔无需太大，减少设备的占用内存
 	4. 雪碧图建议手工合成,这样的优化度最高。
+
+RESTful API
+--------
+
+Resource Representational State Transfer 表现层状态转移，一种后端设计api的规范。
+
+达到的效果： 看Url就知道要什么
+	 		 		 看http method就知道干什么
+      		 看http status  code就知道结果如何
+      		 
+我自己的理解：
+
+  1. 面向资源，URI请求就能反映出需要获取什么资源
+  2. 规范请求方法：
+			* get: 从服务器获取资源  
+			* post: 创建新资源或者更新资源    
+		  * put: 更新服务器资源（需要提供完整的更新资源数据）  
+			* delete: 删除服务器资源  
+			* patch: 更新服务器资源 （只需提供需要更新的资源数据)
+	3. URI: 每个uri对应一个资源请求
+	4. 无状态：不依赖其他资源和操作步骤
