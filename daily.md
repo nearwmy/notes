@@ -142,7 +142,7 @@ WebVR
 	3. 移动端上的图标大多含有 ALPHA 通道的 PNG 图片，为了控制文件大小和显示效果，建议将颜色近的值放在一起，并注意空白间隔无需太大，减少设备的占用内存
 	4. 雪碧图建议手工合成,这样的优化度最高。
 
-RESTful API
+RESTfulAPI
 --------
 
 Resource Representational State Transfer 表现层状态转移，一种后端设计api的规范。
