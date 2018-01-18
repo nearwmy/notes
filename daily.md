@@ -184,10 +184,13 @@ CORS跨域放松cookie
 ---------
 
 1. 强制缓存： `200 from cache` 浏览器会根据 `expries`和 `cache-control` ,优先级 cache-control > expires 来判断是否命中缓存，若命中缓存，则从本地缓存中读取文件
-	－ `from disk cache` 磁盘缓存：磁盘读取时间较长
+
+	－ `from disk cache` 磁盘缓存：磁盘读取时间较长  
 	－ `from memory cache` 内存缓存：通常可达到0ms
-2. 协商缓存： `304 Not Modified` 若未命中缓存则请求服务器根据请求header中的 Last-Modified/IF-Modified-Since、Etag/IF-None-Match 判断是否缓存，如果已缓存则返回304，并且更新header中的信息，否则返回最新资源
+
+2. 协商缓存： `304 Not Modified` 若未命中缓存则请求服务器根据请求header中的 `Last-Modified/IF-Modified-Since、Etag/IF-None-Match` 判断是否缓存，如果已缓存则返回304，并且更新header中的信息，否则返回最新资源
 3. 强制不缓存：
 	- cache-control: no-store max-age = 0 ; Expires = 0 || 过期时间
-	- 静态资源增加版本号 自己控制何时缓存
-  - `<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>` 目前大多服务器不支持，并且代理服务器不解析html文件
+	- 静态资源增加版本号 自己控制何时缓存  
+
+  - `<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>` 目前大多浏览器不支持，并且代理服务器不解析html文件
