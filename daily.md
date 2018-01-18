@@ -7,6 +7,8 @@
 * [图片资源选择](#图片资源选择)
 * [图像压缩与合并的几点感悟](#图像压缩与合并的几点感悟)
 * [RESTfulAPI](#RESTfulAPI)
+* [CORS跨域放松cookie](#CORS跨域放松cookie)
+* [关于缓存](#关于缓存)
 
 
 
@@ -162,3 +164,30 @@ Resource Representational State Transfer 表现层状态转移，一种后端设
 			* patch: 更新服务器资源 （只需提供需要更新的资源数据)
 	3. URI: 每个uri对应一个资源请求
 	4. 无状态：不依赖其他资源和操作步骤
+
+CORS跨域放松cookie
+---------
+
+1. 客户端设置：在xhr open XMLHttpRequest后 设置 `xhr.withCredentials = true` 允许改跨域请求携带cookie，在jquery中 
+	```
+	$.ajax({
+		url:url,
+		xhrFields: {
+			withCredentials:true
+		}
+	});
+	```
+2. 服务端设置：允许目标服务器接受你的跨域发送的cookie `Allow-Control-Allow-Credentials`
+
+
+关于缓存
+---------
+
+1. 强制缓存： `200 from cache` 浏览器会根据 `expries`和 `cache-control` ,优先级 cache-control > expires 来判断是否命中缓存，若命中缓存，则从本地缓存中读取文件
+	－ `from disk cache` 磁盘缓存：磁盘读取时间较长
+	－ `from memory cache` 内存缓存：通常可达到0ms
+2. 协商缓存： `304 Not Modified` 若未命中缓存则请求服务器根据请求header中的 Last-Modified/IF-Modified-Since、Etag/IF-None-Match 判断是否缓存，如果已缓存则返回304，并且更新header中的信息，否则返回最新资源
+3. 强制不缓存：
+	- cache-control: no-store max-age = 0 ; Expires = 0 || 过期时间
+	- 静态资源增加版本号 自己控制何时缓存
+  - `<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>` 目前大多服务器不支持，并且代理服务器不解析html文件
