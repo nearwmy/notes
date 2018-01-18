@@ -19,7 +19,7 @@
 
 ### .gitignore 
 
-` touch .gitignore `创建需要忽略的文件规则,摘自[Git](https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E8%AE%B0%E5%BD%95%E6%AF%8F%E6%AC%A1%E6%9B%B4%E6%96%B0%E5%88%B0%E4%BB%93%E5%BA%93)
+` touch .gitignore ` 创建需要忽略的文件规则,摘自[Git](https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E8%AE%B0%E5%BD%95%E6%AF%8F%E6%AC%A1%E6%9B%B4%E6%96%B0%E5%88%B0%E4%BB%93%E5%BA%93)
 
 ```
 # 此为注释 – 将被 Git 忽略
@@ -50,11 +50,13 @@ git commit --amend
 
 ```
 ### git reset 
+
 `git reset HEAD filename` git commit之后，取消已暂存的文件
 `git reset --hard commitNum` 回到某个版本号
 `git reset --hard HEAD^` 回退到上一个版本号
 
 ### git reflog
+
 当你提交或修改分支时,记录每次命令操作,可用于从新版回退到旧版又需要回退到新版时获取最新版commitnum
 
 ### git checkout 
@@ -101,6 +103,7 @@ git commit --amend
 `git remote add [shortname] [url]` 添加一个远程仓库并起名
 
 ### git fetch
+
 `git fetch [远程主机名]` 拉取远程主机所有分支更新到本地
 `git fetch [远程主机名]:[分支名]` 拉取远程主机指定某个分支代码到本地，但是不做合并操作  
 
@@ -111,6 +114,7 @@ git commit --amend
 `git merge` 合并提交，当两个分支都有修改时，只创建一个新的提交，之前的合并记录在合并之后会丢失
 
 ### git rebase
+
 `git rebase` 当合并两个都有修改的分支时，被合并分支会直接添加到合并分支上，并且此时的 HEAD 并不会随着合并而移到最新提交前，需要再执行 merge 操作使其 HEAD 前移
 
 参考[git merge 与 git rebase 的区别](https://backlog.com/git-tutorial/cn/stepup/stepup1_4.html)
@@ -141,9 +145,18 @@ git config --global push.default matching / simple
 
 ### git stash
 
-`git stash` 将当前未提交的修改保存到 Git 工作栈中
+`git stash` 将当前未提交的修改保存到 Git 工作栈中  
 `git stash pop` 将保存的东西取出来
 
+
+### 扩展
+
+1. 区分本地版本库和远程版本库的状态
+
+`git status` 查看未提交到远程的提交记录  
+`git cherry -v` 查看到未传送到远程代码库的提交描述/说明  
+`git log [本地分支] ^[远程主机名/远程分支名]` 查看指定追踪线路的未传送提交的详细信息  
+`git log -p`  查看更详细的提交记录
 
 
 
