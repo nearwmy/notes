@@ -13,7 +13,7 @@
 
 
 判断原生滚动还是div区域滚动
-------
+--------
 
 ```js
  var originScroll = false;
@@ -25,7 +25,7 @@
  ```
 
 js中的模拟事件
-------
+--------
 
  js中的事件很多，大致可分为UI事件（UIEvents),一般化的鼠标事件（MouseEvents）,DOM的变动事件（MutationEvents）,html事件（HTMLEvents）,一般事件都是用户触发的，但是不一般的情况下或者说应该对得上js无所不能称号的前提下，能生成就能自己触发。在测试和需要主动触发的情况下，这个方法就很给力了。
 
@@ -49,7 +49,7 @@ function trriger(el, type, bubbles, cancelable) {
 ```
 
 移动设备API支持说明
-------
+--------
 
 - **视频 video**: 
 	- iOS10以上不支持autoplay 和 preload ，iOS引入新属性 'playsinline'，此属性可以支持自动播放，前提是视频没有声音;
@@ -98,8 +98,8 @@ function trriger(el, type, bubbles, cancelable) {
 	- navigator.connection 事件，返回网络状态相应信息
 
 
-WebVR
-------
+WebVR 
+--------
 
 - Firefox 和 Google 已相继对VR API 进行支持,两家公司联合创建 WebVR 标准
 - MozVR团队推出开源框架 A-Frame，能通过html标签创建VR网页，不过此框架仅适用于简单的场景，基于threeJS 封装，能快速搭建VR网页。学习成本较低。
@@ -108,7 +108,7 @@ WebVR
 
 
 图片资源选择
-------
+--------
 
 前端优化必不可少的环节，并且图片在网页中占比越来越高，对他们做越好的处理，会让你的页面加速越多。对其做优化之前，我们首先得了解图片。常用的图片格式包括：JPEG GIF PNG SVG，下面分别详细介绍一下：
 
