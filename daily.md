@@ -149,9 +149,9 @@ RESTfulAPI
 
 Resource Representational State Transfer 表现层状态转移，一种后端设计api的规范。
 
-达到的效果： 看Url就知道要什么
-	 		 		 看http method就知道干什么
-      		 看http status  code就知道结果如何
+达到的效果： 看Url就知道要什么  
+	 		 		 看http method就知道干什么  
+      		 看http status  code就知道结果如何  
       		 
 我自己的理解：
 
@@ -162,6 +162,7 @@ Resource Representational State Transfer 表现层状态转移，一种后端设
 		  * put: 更新服务器资源（需要提供完整的更新资源数据）  
 			* delete: 删除服务器资源  
 			* patch: 更新服务器资源 （只需提供需要更新的资源数据)
+			
 	3. URI: 每个uri对应一个资源请求
 	4. 无状态：不依赖其他资源和操作步骤
 
